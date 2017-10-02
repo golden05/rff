@@ -3,7 +3,9 @@
 admin:
   name: admin 
   password_digest: <%= BCrypt::Password.create('password') %>
-
+  admin: true 
+  
 opera:
   name: opera 
   password_digest: <%= BCrypt::Password.create('password') %>
+  admin: false
