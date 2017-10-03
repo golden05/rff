@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_signed
+    if !admin_signed_in?
+      flash[:notice] = "you are not admin"
+      redirect_to login_url 
+    end
+  end
+
   def admin_signed_in?
     if user_signed_in?
       user = User.find_by(id: session[:user_id])

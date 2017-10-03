@@ -27,14 +27,6 @@ class AdminLoginsTest < ApplicationSystemTestCase
     assert page.has_content?("You are not admin")
   end
 
-  private
-  def loginBy(name,password)
-    visit login_url
-    fill_in 'name', with: name
-    fill_in 'password', with: password
-    click_on 'login'
-  end
-
   def logout
     session  = nil
   end
