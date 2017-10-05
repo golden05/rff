@@ -15,8 +15,9 @@ class UsersControllerTest < Rff::IntegrationTest
 
   test "admin can show admin attribute" do
     log_user('admin','password')
+    user = User.find(session[:user_id])
     get users_url
-    get "/users/1"
+    get user_url(user)
     assert_response :success 
   end
 
@@ -33,7 +34,7 @@ class UsersControllerTest < Rff::IntegrationTest
           { name: @user.name ,
             password: @user.password }
         }
-    assert_redirected_to users_url
+    assert_redirected_to user_url(@user)
   end  
 
   test "admin add a new user" do

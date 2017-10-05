@@ -1,6 +1,8 @@
 <%= form_for user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <% if admin_signed_in? %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  <% end %>
   <%= f.label :password  %>
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>

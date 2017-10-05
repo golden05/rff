@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :user_signed_in?
+
   def admin_signed
     if !admin_signed_in?
       redirect_to login_url, notice: "you are not admin" 
@@ -30,6 +32,8 @@ class ApplicationController < ActionController::Base
     end
     return false
   end
+
+  helper_method :admin_signed_in?
 
   protect_from_forgery with: :exception
 end

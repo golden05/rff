@@ -13,5 +13,8 @@
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% end %>
+    <% if user_signed_in?  %>
+      <%= link_to "logout", logout_url, method: :delete %>
+    <% end %>
   </body>
 </html>
