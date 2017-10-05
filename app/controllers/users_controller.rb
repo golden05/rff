@@ -15,9 +15,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params.require(:user).permit(:name, :password, :password_confirmation))
+    user = User.new(user_params)
     if user.save
-      redirect_to users_path
+      flash[:notice] = "#{user.name} was success created."
+      redirect_to users_path 
     end
   end
 
@@ -27,7 +28,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    redirect_to user_path(@user)
+    @user.update(user_params)
+    flash[:notice] = "#{@user.name} was success updated."
+    redirect_to users_path
+  end
+
+  private 
+  def user_params
+    params.require(:user).permit(:name,:password,:password_confirmation)
   end
 
 end

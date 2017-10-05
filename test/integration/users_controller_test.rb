@@ -33,7 +33,7 @@ class UsersControllerTest < Rff::IntegrationTest
           { name: @user.name ,
             password: @user.password }
         }
-    assert_redirected_to user_url(@user)
+    assert_redirected_to users_url
   end  
 
   test "admin add a new user" do
