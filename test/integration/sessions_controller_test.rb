@@ -27,7 +27,10 @@ class SessionsControllerTest < Rff::IntegrationTest
     assert_response :redirect
   end 
 
-  test "something interesting" do
-    
+  test "logout system" do
+    log_user('admin','password')
+    follow_redirect!
+    delete logout_url
+    assert_nil session[:user_id]
   end
 end

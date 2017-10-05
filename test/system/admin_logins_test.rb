@@ -27,6 +27,12 @@ class AdminLoginsTest < ApplicationSystemTestCase
     assert page.has_content?("You are not admin")
   end
 
+  test "user logout the system" do
+    loginBy('admin','password')
+    click_link 'logout'
+    assert_text "Thanks byebye"
+  end
+
   def logout
     session  = nil
   end
