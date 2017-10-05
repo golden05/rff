@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  def user_signed
+    if !user_signed_in?
+      redirect login_url, notice: "you are not login" 
+    end
+  end
+
   def user_signed_in?
     if session[:user_id]
       return true
@@ -10,8 +16,7 @@ class ApplicationController < ActionController::Base
 
   def admin_signed
     if !admin_signed_in?
-      flash[:notice] = "you are not admin"
-      redirect_to login_url 
+      redirect_to login_url, notice: "you are not admin" 
     end
   end
 

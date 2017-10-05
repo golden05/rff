@@ -33,7 +33,4 @@ class AdminLoginsTest < ApplicationSystemTestCase
     assert_text "Thanks byebye"
   end
 
-  def logout
-    session  = nil
-  end
 end

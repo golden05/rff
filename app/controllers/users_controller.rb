@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :admin_signed
+  before_action :admin_signed, except: :show
+  before_action :user_signed, only: :show
   
   def index
     @users = User.all

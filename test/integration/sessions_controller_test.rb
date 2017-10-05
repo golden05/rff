@@ -14,7 +14,7 @@ class SessionsControllerTest < Rff::IntegrationTest
   test "success login to redirect admin_index" do
     log_user('admin','password')
     assert_redirected_to admin_index_url
-  end
+  end 
 
   test "success after login show message" do
     log_user('admin','password')
@@ -32,5 +32,10 @@ class SessionsControllerTest < Rff::IntegrationTest
     follow_redirect!
     delete logout_url
     assert_nil session[:user_id]
+  end
+
+  test "normal user login" do
+    log_user('opera','password')
+    assert_redirected_to user_url(users(:opera))
   end
 end

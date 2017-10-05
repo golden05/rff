@@ -10,4 +10,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     click_on 'login'
   end
 
+  def logout
+    session = nil
+  end
+
 end

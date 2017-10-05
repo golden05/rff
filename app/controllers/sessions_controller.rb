@@ -8,7 +8,12 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
-      redirect_to admin_index_url, notice: "#{params[:name]} logined"
+      flash[:notice] = "#{params[:name]} logined"
+      if admin_signed_in?
+        redirect_to admin_index_url
+      else
+        redirect_to user_url(user)
+      end 
     else
       redirect_to login_url, notice: "user #{params[:name]} login failed"
     end
