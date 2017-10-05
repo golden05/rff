@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      flash[:notice] = "#{user.name} was success created."
-      redirect_to users_path 
+      redirect_to users_path, notice: "#{user.name} was success created." 
     end
   end
 

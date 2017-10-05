@@ -1,0 +1,7 @@
+<h1>Corps Index</h1>
+<% @corps.each do |corp| %>
+  <%= corp.name %>
+  <%= link_to "edit", edit_corp_url(corp) , id: corp.name %>
+  <br />
+<% end %>
+<%= link_to "new corp", new_corp_url %>

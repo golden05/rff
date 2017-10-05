@@ -15,12 +15,12 @@ class SessionsController < ApplicationController
         redirect_to user_url(user)
       end 
     else
-      redirect_to login_url, notice: "user #{params[:name]} login failed"
+      redirect_to root_url, notice: "user #{params[:name]} login failed"
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_url, notice: "Thanks byebye"
+    redirect_to root_url, notice: "Thanks byebye"
   end 
 end
