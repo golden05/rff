@@ -13,20 +13,12 @@ class AdminManageUsersTest < ApplicationSystemTestCase
   end
 
   test "add a user" do
-    click_link "new user"
-    fill_in "Name", with: "jam"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
-    click_on "submit"
+    createNewUser('jam','password') 
     assert page.has_content?("jam")
   end
 
   test "can edit a user" do
-    click_link "new user"
-    fill_in "Name", with: "jam"
-    fill_in "Password", with: "password"
-    fill_in "Password confirmation", with: "password"
-    click_on "submit"
+    createNewUser('jam','password') 
     n = page.all('a').size - 2
     page.all('a')[n].click
     fill_in "Name", with: "jamith"

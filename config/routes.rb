@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
 
   root to: 'sessions#new'
-  resources :users
+  resources :users do
+    member do
+      get 'workfor'
+    end
+  end
 
   resources :corps
 

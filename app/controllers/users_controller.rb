@@ -32,6 +32,9 @@ class UsersController < ApplicationController
     redirect_to user_path(@user), notice: "#{@user.name} was success updated."
   end
 
+  def workfor
+    set_user
+  end
   private 
 
   def set_user
