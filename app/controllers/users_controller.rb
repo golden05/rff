@@ -34,7 +34,18 @@ class UsersController < ApplicationController
 
   def workfor
     set_user
+    @corps = @user.corps
   end
+
+  def new_workfor
+    @corps = Corp.all
+  end
+
+  def create_workfor
+    corp = Corp.find(params[:SelectCorp])
+
+  end
+
   private 
 
   def set_user

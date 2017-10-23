@@ -1,0 +1,4 @@
+<%= form_tag("create_workfor", method: :post) do %>
+  <%= select_tag 'SelectCorp', options_from_collection_for_select(@corps, "id", "name") %>
+  <%= submit_tag "submit" %>
+<% end %>

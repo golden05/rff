@@ -1,0 +1,7 @@
+<% @jobs.each do |job| %>
+  <%= job.corp.name %>
+  <%= link_to "edit", edit_user_job_path(@user, job) %>
+  <br />
+<% end %>
+
+<%= link_to "new job", new_user_job_path(@user) %>

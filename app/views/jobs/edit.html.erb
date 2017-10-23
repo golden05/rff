@@ -1,0 +1,5 @@
+<%= form_tag user_job_path, method: :put do %>
+  <%= hidden_field_tag 'job_id', @job.id %>
+  <%= select_tag "corp", options_from_collection_for_select(@corps,"id","name") %>
+  <%= submit_tag "submit" %>
+<% end %>

@@ -1,20 +1,17 @@
 require 'test_helper'
 
 class UsersControllerTest < Rff::IntegrationTest
- 
-  test "admin can show all users" do
+
+  setup do
     log_user('admin','password')
+  end
+
+  test "admin can show all users" do
     get users_url
     assert_response :success
   end
 
-  test "admin not login can now show all user page" do
-    get users_url
-    assert_response :redirect
-  end
-
   test "admin can show admin attribute" do
-    log_user('admin','password')
     user = User.find(session[:user_id])
     get users_url
     get user_url(user)
@@ -23,7 +20,6 @@ class UsersControllerTest < Rff::IntegrationTest
 
   test "admin can edit a user" do
     @user = User.first 
-    log_user('admin', 'password')
     get users_url
     assert_select 'a', text: 'edit'
     get edit_user_url(@user)
@@ -38,7 +34,6 @@ class UsersControllerTest < Rff::IntegrationTest
   end  
 
   test "admin add a new user" do
-    log_user('admin','password')
     assert_difference('User.count') do
       post users_url, params: {
           user: {
@@ -49,7 +44,6 @@ class UsersControllerTest < Rff::IntegrationTest
       }
     end
     assert_redirected_to users_url
-    
   end
 
 end

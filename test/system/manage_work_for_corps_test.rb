@@ -14,5 +14,11 @@ class ManageWorkForCorpsTest < ApplicationSystemTestCase
     visit "/users/#{user.id}/edit"
     click_link 'corps'
     assert page.has_content?('corp list')
+    click_link 'new work for'
+    select('corp1', from: 'SelectCorp')
+    click_on 'submit'
+    assert page.has_content?('corp1 successfull create workfor')
   end
+
+
 end

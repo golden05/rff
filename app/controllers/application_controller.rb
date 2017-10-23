@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   def user_signed
-    if !user_signed_in?
+    unless user_signed_in?
       redirect login_url, notice: "you are not login" 
     end
   end
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
 
   def admin_signed
-    if !admin_signed_in?
+    unless admin_signed_in?
       redirect_to login_url, notice: "you are not admin" 
     end
   end
